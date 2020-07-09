@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue</title>
+</head>
+<body>
+    <div id='app'>
+        {{message}}
+        <todo-item v-for='item in items' v-bind:todo='item' :key="item"></todo-item>
+    </div>
+    <div>
+        <alert-box>Something bad happened.</alert-box>
+        <wx>阿撒撒上</wx>
+    </div>
+    <script type="text/javascript">
+        Vue.component('todo-item',{
+            props: ['todo'],
+            template: '<li>这是个待办项: {{todo}}</li>',
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'mochixuan',
+                items : [
+                    '我','是','谁'
+                ]
+            },
+            methods: {
+               
+            },
+        })
+    </script>
+</body>
+</html>
