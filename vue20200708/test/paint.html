@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div id='root'>1</div>
+        <button onclick="change()">改变</button>
+    </div>
+    <script>
+        let ele = document.getElementById('root');
+        function change() {
+            Promise.resolve().then(()=> { console.warn('promise1', ele.innerText)  })
+            setTimeout(()=>{ console.warn('timeout 1', ele.innerText) },0)
+            ele.innerText = parseInt(ele.innerText) + 1;
+            console.warn('ele', document.getElementById('root').innerText);
+            Promise.resolve().then(() => { console.warn('promise2', ele.innerText) })
+            setTimeout(() => { console.warn('timeout 2', ele.innerText) }, 0)
+        }
+
+        setTimeout(()=>{
+            change();
+        }, 3000)
+    </script>
+</body>
+</html>

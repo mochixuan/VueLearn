@@ -6,7 +6,7 @@
         <button @click="changeErrorData">传错误的值给Child</button>
 
         <Child v-on:receive-data="fromChild($event)" v-bind:parentMessage="message">
-            天下第一: {{person.name}}
+            天下第一: {{person.name}} 
             <template v-slot:header>
                 <h1>我是v-slot:header</h1>
             </template>
@@ -17,6 +17,7 @@
                 <h1>我是v-slot:default</h1>
             </template>
         </Child>
+        
         <Child v-slot="childMes">
             {{childMes.name}}
         </Child>
@@ -44,7 +45,7 @@ export default {
                 age: 24
             }
         }
-    },
+    }, 
     methods: {
         fromChild: function(data) {
             this.message = this.message + 1;

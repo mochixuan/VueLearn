@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向绑定</title>
+</head>
+<body>
+    <div id='root'>
+        <input id='input' />
+        <span id='span'></span>
+    </div>
+    <script>
+         var input = document.getElementById('input');
+        var span = document.getElementById('span');
+        const obj = { name: 'mochixuan' }
+        let name = obj.name;
+
+        input.oninput = function (e) {
+            obj.name = e.target.value;
+            console.warn('==========', obj.name);
+        }
+
+        
+        Object.defineProperty(obj,'name', {
+            configurable: false,
+            enumerable: true,
+            get: function() {
+                console.warn('获取obj.name');
+                return name;
+            },
+            set: function(newVal) {
+                console.warn('设置obj.name');
+                name = newVal;
+                span.innerText = name;
+            }
+        })
+    </script>
+</body>
+</html>

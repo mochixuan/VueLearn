@@ -10,6 +10,7 @@
         <a href="https://www.baidu.com/" v-bind:style="{fontSize: 32+'px'}" v-show="false">跳转百度</a>
         <input v-model.lazy="message" />
         <span>{{message}}</span>
+        <button @click="addItem()">{{items.join('-')}}</button>
     </div>
 </template>
 <script>
@@ -20,7 +21,8 @@ export default {
             isButtonDisabled: null,
             link: "https://www.baidu.com/",
             isActive: false,
-            message: 'mochixuan'
+            message: 'mochixuan',
+            items: [1,2,3]
         }
     },
     methods: {
@@ -28,6 +30,10 @@ export default {
             console.log('sayHello', data)
             return true
         },
+        addItem: function() {
+            // this.items.push(1); //可以触发
+            this.items[0] = 3; //不触发
+        }
     }
 }
 </script>
